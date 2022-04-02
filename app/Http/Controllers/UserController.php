@@ -7,6 +7,7 @@ use \App\User as Model;
 
 class UserController extends Controller
 {
+    private $viewPrefix = "user";
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +17,7 @@ class UserController extends Controller
     {
         $models = Model::latest()->paginate(10);
         $data['models'] = $models;
-        return view('user_index', $data);
+        return view($this->viewPrefix . '_index', $data);
     }
 
     /**
@@ -31,7 +32,7 @@ class UserController extends Controller
         $data['method'] = 'POST';
         $data['route'] = 'user.store';
         $data['namaTombol'] = 'Simpan';
-        return view('user_form', $data);
+        return view($this->viewPrefix . '_form', $data);
     }
 
     /**
@@ -42,16 +43,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $requestData = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed',
         ]);
-        $model = new Model();
-        $model->name = $request->name;
-        $model->email = $request->email;
-        $model->password = bcrypt($request->password);
-        $model->save();
+
+        if ($request->filled('password')) {
+            $requestData['password'] = bcrypt($request->password);
+        }
+        Model::create($requestData);
         flash("Data berhasil disimpan");
         return back();
     }
@@ -64,7 +65,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-
+        $data['model'] = Model::findOrFail($id);
+        return view($this->viewPrefix . '_show', $data);
     }
 
     /**
@@ -80,7 +82,7 @@ class UserController extends Controller
         $data['method'] = 'PUT';
         $data['route'] = ['user.update', $id];
         $data['namaTombol'] = 'Update';
-        return view('user_form', $data);
+        return view($this->viewPrefix . '_form', $data);
     }
 
     /**
@@ -92,18 +94,16 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $requestData = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'nullable|confirmed',
         ]);
-        $model = Model::findOrFail($id);
-        $model->name = $request->name;
-        $model->email = $request->email;
-        if ($request->password) {
-            $model->password = bcrypt($request->password);
+
+        if ($request->filled('password')) {
+            $requestData['password'] = bcrypt($request->password);
         }
-        $model->save();
+        Model::where('id', $id)->update($requestData);
         flash("Data berhasil diupdate");
         return back();
     }
@@ -116,12 +116,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-
         if ($id == 1) {
             flash("Admin tidak dapat dihapus")->error();
             return back();
         }
-        $model = Model::find($id);
+        $model = Model::findOrFail($id);
         $model->delete();
         flash("Data berhasil dihapus");
         return back();

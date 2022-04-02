@@ -28,6 +28,7 @@
                                     <td>
                                        {!! Form::open(['route' => ['user.destroy', $item->id], 'method' => 'DELETE','onsubmit' => 'return confirm("Anda Yakin ?")']) !!}
                                         <a href="{{ route('user.edit', $item->id) }}" class="btn btn-warning">Edit</a>
+                                        <a href="{{ route('user.show', $item->id) }}" class="btn btn-info ml-1 mr-1">Detail</a>
                                         
                                         {!! Form::submit('HAPUS', ['class' => 'btn btn-danger']) !!}
                                        {!! Form::close() !!}
