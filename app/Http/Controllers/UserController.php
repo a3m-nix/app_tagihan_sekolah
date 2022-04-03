@@ -43,6 +43,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        //semua data dari form harus divalidasi agar variabelnya tersimpan di $requestData
         $requestData = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
