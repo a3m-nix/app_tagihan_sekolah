@@ -10,8 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
-
-Route::resource('user', 'UserController');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('user', 'UserController');
+});
 
 Route::get('/', function () {
     return view('welcome');

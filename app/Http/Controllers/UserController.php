@@ -8,6 +8,7 @@ use \App\User as Model;
 class UserController extends Controller
 {
     private $viewPrefix = "user";
+    private $routePrefix = "user";
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +18,7 @@ class UserController extends Controller
     {
         $models = Model::latest()->paginate(10);
         $data['models'] = $models;
+        $data['routePrefix'] = $this->routePrefix;
         return view($this->viewPrefix . '_index', $data);
     }
 
@@ -30,7 +32,7 @@ class UserController extends Controller
         $model = new Model();
         $data['model'] = $model;
         $data['method'] = 'POST';
-        $data['route'] = 'user.store';
+        $data['route'] = $this->routePrefix . '.store';
         $data['namaTombol'] = 'Simpan';
         return view($this->viewPrefix . '_form', $data);
     }
@@ -81,7 +83,7 @@ class UserController extends Controller
         $model = Model::findOrFail($id);
         $data['model'] = $model;
         $data['method'] = 'PUT';
-        $data['route'] = ['user.update', $id];
+        $data['route'] = [$this->routePrefix . '.update', $id];
         $data['namaTombol'] = 'Update';
         return view($this->viewPrefix . '_form', $data);
     }
