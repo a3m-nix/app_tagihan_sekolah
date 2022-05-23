@@ -10,8 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
+Route::get('logout', function () {
+    Auth::logout();
+    return redirect('login');
+});
+
 Route::middleware(['auth'])->group(function () {
-    Route::resource('user', 'UserController');
+    Route::resource('user', 'UserController')->middleware('admin');
+
 });
 
 Route::get('/', function () {
