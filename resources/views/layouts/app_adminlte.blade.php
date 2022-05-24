@@ -197,6 +197,12 @@
             </a>            
           </li> 
           <li class="nav-item">
+            <a href="{{ route('siswa.index') }}" class="nav-link {{ request()->is('siswa*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Data Siswa</p>
+            </a>            
+          </li> 
+          <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link {{ request()->is('logout*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-logout"></i>
               <p>Logout</p>
@@ -210,7 +216,15 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        @include('flash::message')        
+      </div><!-- /.container-fluid -->
+    </section>
     @yield('content')
+</div>
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
