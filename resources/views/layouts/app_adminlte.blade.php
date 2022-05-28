@@ -190,10 +190,18 @@
               <p>Beranda</p>
             </a>            
           </li>
+          @if (auth()->user()->akses == 'admin')
+            <li class="nav-item">
+                <a href="{{ route('user.index') }}" class="nav-link {{ request()->is('user*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-users"></i>
+                <p>Data User</p>
+                </a>            
+            </li> 
+          @endif
           <li class="nav-item">
-            <a href="{{ route('user.index') }}" class="nav-link {{ request()->is('user*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-users"></i>
-              <p>Data User</p>
+            <a href="{{ route('biaya.index') }}" class="nav-link {{ request()->is('biaya*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-money-bill"></i>
+              <p>Data Biaya</p>
             </a>            
           </li> 
           <li class="nav-item">
@@ -248,5 +256,11 @@
 <script src="{{ asset('adminlte') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte') }}/dist/js/adminlte.min.js"></script>
+<script src="{{ asset('js') }}/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.format-rupiah').mask('#.##0', {reverse: true});
+    });
+</script>
 </body>
 </html>

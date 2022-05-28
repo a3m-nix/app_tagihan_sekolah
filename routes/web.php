@@ -18,6 +18,7 @@ Route::get('logout', function () {
 Route::middleware(['auth'])->group(function () {
     Route::resource('user', 'UserController')->middleware('admin');
     Route::resource('siswa', 'SiswaController');
+    Route::resource('biaya', 'BiayaController');
     Route::post('siswaimport/upload', 'SiswaImportController@upload')->name('siswa.import');
 });
 
