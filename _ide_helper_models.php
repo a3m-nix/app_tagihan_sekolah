@@ -50,6 +50,8 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|Siswa newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Siswa newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Siswa query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Siswa search($search, $threshold = null, $entireText = false, $entireTextOnly = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|Siswa searchRestricted($search, $restriction, $threshold = null, $entireText = false, $entireTextOnly = false)
  * @method static \Illuminate\Database\Eloquent\Builder|Siswa whereAngkatan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Siswa whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Siswa whereId($value)

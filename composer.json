@@ -14,7 +14,8 @@
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
         "laravelcollective/html": "^6.3",
-        "maatwebsite/excel": "^3.1"
+        "maatwebsite/excel": "^3.1",
+        "nicolaslopezj/searchable": "^1.13"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "2.8",
