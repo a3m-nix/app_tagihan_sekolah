@@ -6,11 +6,19 @@
             <div class="card">
                 <div class="card-header">Tambah Siswa</div>
                 <div class="card-body">
-                    {!! Form::model($model, ['route' => $route, 'method' => $method]) !!}
+                    {!! Form::model($model, ['route' => $route, 'method' => $method, 'files' => true]) !!}
                         <div class="form-group">
                             <label for="nama">Nama Lengkap</label>
                             {!! Form::text('nama', null, ['class' => 'form-control','autofocus' => true]) !!}
                             <span class="text-danger">{{ $errors->first('nama') }}</span>
+                        </div>
+                        @if ($method == "PUT")
+                            <img src="{{ \Storage::url($model->gambar) }}" width="150" />
+                        @endif
+                        <div class="form-group">
+                            <label for="gambar">Gambar</label>
+                            {!! Form::file('gambar', ['class' => 'form-control']) !!}
+                            <span class="text-danger">{{ $errors->first('gambar') }}</span>
                         </div>
                         <div class="form-group">
                             <label for="nisn">NISN</label>

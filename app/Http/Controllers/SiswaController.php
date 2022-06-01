@@ -56,8 +56,12 @@ class SiswaController extends Controller
             'nisn' => 'required|unique:siswa',
             'program_studi' => 'required',
             'angkatan' => 'required',
+            'gambar' => 'nullable|image|mimes:jpg,png,jpeg|max:2000',
         ]);
 
+        if ($request->hasFile('gambar')) {
+            $requestData['gambar'] = $request->file('gambar')->store('public/images');
+        }
         $requestData['user_id'] = Auth::user()->id;
 
         Model::create($requestData);
@@ -107,8 +111,15 @@ class SiswaController extends Controller
             'nisn' => 'required|unique:siswa,nisn,' . $id,
             'program_studi' => 'required',
             'angkatan' => 'required',
+            'gambar' => 'nullable|image|mimes:jpg,png,jpeg|max:2000',
         ]);
-
+        if ($request->hasFile('gambar')) {
+            $requestData['gambar'] = $request->file('gambar')->store('public/images');
+            $model = Model::findOrFail($id);
+            if ($model->gambar != null) {
+                \Storage::delete($model->gambar);
+            }
+        }
         $requestData['user_id'] = Auth::user()->id;
         Model::where('id', $id)->update($requestData);
         flash("Data berhasil diupdate");

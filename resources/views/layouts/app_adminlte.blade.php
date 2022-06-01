@@ -158,13 +158,16 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-3 d-flex border-bottom-0">
         <div class="image">
-          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('adminlte') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Helo, {{ Auth::user()->name }}</a>
         </div>
+      </div>
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <a href="{{ route('userprofil.edit',0) }}">Anda Login sebagai {{ Auth::user()->akses }} <i class="fa fa-edit"></i></a>
       </div>
 
       <!-- SidebarSearch Form -->

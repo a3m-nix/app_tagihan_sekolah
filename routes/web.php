@@ -19,6 +19,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', 'UserController')->middleware('admin');
     Route::resource('siswa', 'SiswaController');
     Route::resource('biaya', 'BiayaController');
+    Route::resource('userprofil', 'UserProfilController');
     Route::post('siswaimport/upload', 'SiswaImportController@upload')->name('siswa.import');
 });
 

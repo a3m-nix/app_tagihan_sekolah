@@ -6,7 +6,8 @@
             <div class="card">
                 <div class="card-header">TAMPIL DATA {{ strtoupper($model->nama) }}</div>
                 <div class="card-body">
-                    <table class="table table-striped">
+                    <img src="{{ \Storage::url($model->gambar ?? 'images/no-image.png') }}" width="150" />
+                    <table class="table table-striped table-sm">
                         <thead>
                             <tr>
                                 <td>ID</td>
