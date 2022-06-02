@@ -1,21 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.app_adminlte')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
+    <!-- Main content -->
+    <section class="content">
             <div class="card">
                 <div class="card-header">TAMPIL DATA {{ strtoupper($model->name) }}</div>
                 <div class="card-body">
-                    <table class="table table-striped">
+                    <table class="table table-sm">
                         <thead>
                             <tr>
-                                <td>ID</td>
+                                <td width="12%">ID</td>
                                 <td>: {{ $model->id }}</td>
                             </tr>
                             <tr>
                                 <td>NAMA</td>
                                 <td>: {{ $model->name }}</td>
+                            </tr>
+                            <tr>
+                                <td>HAK AKSES</td>
+                                <td>: {{ $model->akses }}</td>
                             </tr>
                             <tr>
                                 <td>EMAIL</td>
@@ -25,11 +28,13 @@
                                 <td>TGL BUAT</td>
                                 <td>: {{ $model->created_at->format('d/m/Y H:i') }}</td>
                             </tr>
+                            <tr>
+                                <td>TGL UBAH</td>
+                                <td>: {{ $model->updated_at->format('d/m/Y H:i') }}</td>
+                            </tr>
                         </thead>
                     </table>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+    </section>
 @endsection

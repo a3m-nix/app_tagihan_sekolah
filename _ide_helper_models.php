@@ -40,6 +40,7 @@ namespace App{
  *
  * @property int $id
  * @property string $nama
+ * @property string|null $gambar
  * @property string $nisn
  * @property string $program_studi
  * @property int $angkatan
@@ -54,6 +55,7 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|Siswa searchRestricted($search, $restriction, $threshold = null, $entireText = false, $entireTextOnly = false)
  * @method static \Illuminate\Database\Eloquent\Builder|Siswa whereAngkatan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Siswa whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Siswa whereGambar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Siswa whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Siswa whereNama($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Siswa whereNisn($value)

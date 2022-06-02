@@ -40,7 +40,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nama }}</td>
-                                    <td>{{ number_format($item->jumlah, 0, ",", ".") }}</td>
+                                    <td>{{ $item->getJumlahRupiah() }}</td>
                                     <td>{{ $item->user->name }}</td>
                                     <td>
                                        {!! Form::open(['route' => [$routePrefix.'.destroy', $item->id], 'method' => 'DELETE','onsubmit' => 'return confirm("Anda Yakin ?")']) !!}
