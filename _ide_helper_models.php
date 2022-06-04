@@ -68,6 +68,45 @@ namespace App{
 
 namespace App{
 /**
+ * App\Tagihan
+ *
+ * @property int $id
+ * @property int $siswa_id
+ * @property string $tanggal_tagihan
+ * @property string $tanggal_jatuh_tempo
+ * @property string $nama
+ * @property float $jumlah
+ * @property string|null $keterangan
+ * @property int $denda
+ * @property string $status
+ * @property string|null $tanggal_bayar
+ * @property string|null $dibayar_oleh
+ * @property string $dibuat_oleh
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereDenda($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereDibayarOleh($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereDibuatOleh($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereJumlah($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereKeterangan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereSiswaId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereTanggalBayar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereTanggalJatuhTempo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereTanggalTagihan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tagihan whereUpdatedAt($value)
+ */
+	class Tagihan extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\User
  *
  * @property int $id

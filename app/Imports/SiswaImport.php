@@ -14,12 +14,12 @@ class SiswaImport implements ToCollection
     public function collection(Collection $collection)
     {
         foreach ($collection as $row) {
-            $no = $row[0];
-            $nisn = $row[1];
-            $nama = $row[2];
-            $programStudi = $row[3];
-            $angkatan = $row[4];
-            if (is_int($no)) {
+            if (is_int($row[0])) {
+                $no = $row[0];
+                $nisn = $row[1];
+                $nama = $row[2];
+                $programStudi = $row[3];
+                $angkatan = $row[4];
                 $siswa = \App\Siswa::where('nisn', $nisn)->first();
                 if ($siswa == null) {
                     \App\Siswa::create([

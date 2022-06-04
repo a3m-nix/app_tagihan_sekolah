@@ -212,7 +212,13 @@
               <i class="nav-icon fas fa-user"></i>
               <p>Data Siswa</p>
             </a>            
-          </li> 
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('tagihan.index') }}" class="nav-link {{ request()->is('tagihan*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-money-bill"></i>
+              <p>Data Tagihan</p>
+            </a>            
+          </li>
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link {{ request()->is('logout*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-logout"></i>
