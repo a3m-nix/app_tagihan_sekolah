@@ -9,6 +9,12 @@ class Biaya extends Model
 {
     protected $table = 'biaya';
     protected $guarded = [];
+    protected $appends = ['biaya_nama'];
+
+    public function getBiayaNamaAttribute()
+    {
+        return $this->nama . ' (' . $this->getJumlahRupiah() . ')';
+    }
 
     /**
      * Get the user that owns the Siswa

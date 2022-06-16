@@ -20,6 +20,7 @@ namespace App{
  * @property int $user_id
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
+ * @property-read mixed $biaya_nama
  * @property-read \App\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Biaya newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Biaya newQuery()
@@ -72,8 +73,8 @@ namespace App{
  *
  * @property int $id
  * @property int $siswa_id
- * @property string $tanggal_tagihan
- * @property string $tanggal_jatuh_tempo
+ * @property \Illuminate\Support\Carbon $tanggal_tagihan
+ * @property \Illuminate\Support\Carbon $tanggal_jatuh_tempo
  * @property string $nama
  * @property float $jumlah
  * @property string|null $keterangan
@@ -84,6 +85,7 @@ namespace App{
  * @property string $dibuat_oleh
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
+ * @property-read \App\Siswa $siswa
  * @method static \Illuminate\Database\Eloquent\Builder|Tagihan newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tagihan newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tagihan query()

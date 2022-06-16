@@ -3,46 +3,34 @@
 @section('content')
     <!-- Main content -->
     <section class="content">
-            <div class="card">
-                <div class="card-header">Tambah Siswa</div>
-                <div class="card-body">
-                    {!! Form::model($model, ['route' => $route, 'method' => $method, 'files' => true]) !!}
-                        <div class="form-group">
-                            <label for="nama">Nama Lengkap</label>
-                            {!! Form::text('nama', null, ['class' => 'form-control','autofocus' => true]) !!}
-                            <span class="text-danger">{{ $errors->first('nama') }}</span>
-                        </div>
-                        @if ($method == "PUT")
-                            <img src="{{ \Storage::url($model->gambar) }}" width="150" />
-                        @endif
-                        <div class="form-group">
-                            <label for="gambar">Gambar</label>
-                            {!! Form::file('gambar', ['class' => 'form-control']) !!}
-                            <span class="text-danger">{{ $errors->first('gambar') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="nisn">NISN</label>
-                            {!! Form::text('nisn', null, ['class' => 'form-control']) !!}
-                            <span class="text-danger">{{ $errors->first('nisn') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="program_studi">Program Studi</label>
-                            {!! Form::select('program_studi', [
-                                'TKJ'   => 'Teknik Komputer dan Jaringan',
-                                'Multimedia' => 'Multimedia',
-                            ], null, ['class' => 'form-control']) !!}
-                            <span class="text-danger">{{ $errors->first('program_studi') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="angkatan">Tahun Masuk</label>
-            {!! Form::selectRange('angkatan', 2021, date('Y'), null, ['class' => 'form-control']) !!}
-                            <span class="text-danger">{{ $errors->first('angkatan') }}</span>
-                        </div>
-                        {!! Form::submit($namaTombol, ['class' => 'btn btn-primary']) !!}
-                    {!! Form::close() !!}
+        <div class="card">
+            <div class="card-header">BUAT TAGIHAN BARU</div>
+            <div class="card-body">
+                {!! Form::model($model, ['route' => $route, 'method' => $method, 'files' => true]) !!}
+                <div class="form-group">
+                    <label for="tanggal_tagihan">Tanggal Tagihan</label>
+                    {!! Form::date('tanggal_tagihan', null, ['class' => 'form-control']) !!}
+                    <span class="text-danger">{{ $errors->first('tanggal_tagihan') }}</span>
                 </div>
+                <div class="form-group">
+                    <label for="tanggal_jatuh_tempo">Tanggal Jatuh Tempo</label>
+                    {!! Form::date('tanggal_jatuh_tempo', null, ['class' => 'form-control']) !!}
+                    <span class="text-danger">{{ $errors->first('tanggal_jatuh_tempo') }}</span>
+                </div>
+                <div class="form-group">
+                    <label for="biaya_id">Biaya Tagihan</label>
+                    {!! Form::select('biaya_id', $biayaList, null, ['class' => 'form-control']) !!}
+                    <span class="text-danger">{{ $errors->first('biaya_id') }}</span>
+                </div>
+                <div class="form-group">
+                    <label for="angkatan">Tahun Masuk / Angkatan</label>
+                    {!! Form::selectRange('angkatan', 2021, date('Y'), null, ['class' => 'form-control', 'placeholder' => 'Semua Angkatan']) !!}
+                    <span class="text-danger">{{ $errors->first('angkatan') }}</span>
+                </div>
+                {!! Form::submit($namaTombol, ['class' => 'btn btn-primary']) !!}
+                {!! Form::close() !!}
             </div>
-        </section>
-        <!-- /.content -->
-      
+        </div>
+    </section>
+    <!-- /.content -->
 @endsection
